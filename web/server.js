@@ -3,8 +3,10 @@ const express=require('express'),http=require('http');
 const {Server}=require('socket.io');
 const app=express(),server=http.createServer(app),io=new Server(server);
 const streams=new Map(), viewers=new Map();
+app.use(express.json({limit:'32kb'}));
 app.use(express.static('public'));
 app.get('/health',(_,res)=>res.json({ok:true,app:'StreamZone'}));
+require('./youtube-routes')(app);
 const clean=(v,n=100)=>String(v||'').replace(/[<>]/g,'').trim().slice(0,n);
 function publish(){io.emit('streams',Array.from(streams.values()).map(s=>({channel:s.channel,title:s.title,category:s.category,name:s.name,viewers:s.viewers||0})))}
 io.on('connection',s=>{
