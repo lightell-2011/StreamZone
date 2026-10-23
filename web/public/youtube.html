@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100d18">
+<title>StreamZone · YouTube</title>
+<link rel="stylesheet" href="/youtube.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+<header class="top"><a class="brand" href="/">◈ Stream<span>Zone</span></a><div class="top-actions"><span id="authState">Not connected</span><button id="settingsBtn">API setup</button><button id="connectBtn" class="primary">Connect Google</button></div></header>
+<main>
+<section class="intro"><div><small>STREAMZONE INTEGRATION</small><h1>Your YouTube.<br><em>All in one place.</em></h1><p>Find live streams, watch, manage subscriptions, and chat using your YouTube account.</p></div><div class="play-icon">▶</div></section>
+<nav class="tabs" aria-label="YouTube sections"><button class="tab active" data-tab="live">● Live</button><button class="tab" data-tab="subscriptions">Subscriptions</button><button class="tab" data-tab="account">Account</button><button class="tab" data-tab="help">Help</button></nav>
+<section id="view-live" class="view"><div class="section-head"><div><small>DISCOVER</small><h2>Live on YouTube</h2></div><div class="searchrow"><input id="searchInput" placeholder="Search live streams"><button id="searchBtn" class="primary">Search</button></div></div><p class="muted">Connect Google and configure an API key to search. Search uses YouTube's public live video results.</p><div id="liveGrid" class="cards"><div class="empty">Set up your YouTube API key to get started.</div></div></section>
+<section id="view-subscriptions" class="view hidden"><div class="section-head"><div><small>YOUR CHANNELS</small><h2>Subscriptions</h2></div><button id="refreshSubs" class="primary">Refresh</button></div><div id="subsList" class="cards"><div class="empty">Connect Google to see your subscriptions.</div></div></section>
+<section id="view-account" class="view hidden"><small>GOOGLE ACCOUNT</small><h2>Your account</h2><div id="accountCard" class="account-card"><div class="empty">Connect Google to load your YouTube account.</div></div><button id="disconnectBtn" class="danger">Disconnect Google</button></section>
+<section id="view-help" class="view hidden"><small>SUPPORT</small><h2>Help & links</h2><div class="help-grid"><article><h3>WhatsApp</h3><p>Coming soon</p></article><article><h3>Discord</h3><p>Coming soon</p></article><article><h3>Website</h3><p>Coming soon</p></article></div><p class="muted">YouTube access is provided by Google APIs. StreamZone never asks for or stores your Google password.</p></section>
+</main>
+<div id="playerOverlay" class="overlay hidden"><div class="player-panel"><div class="player-head"><strong id="playerTitle">YouTube live</strong><button id="closePlayer">×</button></div><div class="player-grid"><div><div class="player-frame"><iframe id="youtubePlayer" title="YouTube live player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div id="videoActions" class="video-actions"></div></div><aside class="chat-panel"><h3>Live chat</h3><div id="chatMessages"><p class="muted">Choose a live stream to load its chat.</p></div><form id="chatForm"><input id="chatInput" maxlength="200" placeholder="Send a message…" autocomplete="off"><button class="primary">Send</button></form><p id="chatStatus" class="muted tiny">You must be signed in to send chat messages.</p></aside></div></div></div>
+<div id="settingsOverlay" class="overlay hidden"><form id="settingsForm" class="settings-panel"><button type="button" id="closeSettings" class="xbtn">×</button><small>ONE-TIME SETUP</small><h2>Connect YouTube API</h2><p class="muted">Create credentials in Google Cloud Console. Enable YouTube Data API v3 and configure an OAuth Web client. Restrict your API key to YouTube Data API and your deployed HTTPS website.</p><label>Google OAuth Client ID<input id="clientIdInput" required placeholder="xxxxx.apps.googleusercontent.com"></label><label>YouTube Data API key<input id="apiKeyInput" required type="password" placeholder="AIza…"></label><button class="primary" type="submit">Save settings</button><a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Open Google Cloud Console ↗</a><p class="tiny muted">Credentials are saved in this browser only. Access tokens are kept in memory and cleared when the page closes.</p></form></div>
+<div id="toast" class="toast hidden" role="status"></div>
+<script src="/youtube.js"></script>
+</body></html>
